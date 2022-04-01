@@ -1,0 +1,11 @@
+version: "3"
+services:
+
+  linux_machine:
+    build: .
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+
+    volumes:
+      - .:/opt/code
+
