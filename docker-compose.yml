@@ -7,5 +7,5 @@ services:
     tty: true        # docker run -t
 
     volumes:
-      - .:/opt/code
+      - .:/code/adv_python_training
 
