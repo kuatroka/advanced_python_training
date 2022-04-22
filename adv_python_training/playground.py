@@ -121,3 +121,111 @@ try:
     print(mydict["iceage"])
 except:
     print("error")
+
+
+for value in mydict.values():
+    print(value)
+
+for key in mydict.keys():
+    print(key)
+
+for key, value in mydict.items():
+    print(key, value)
+
+# when creating a copy of a dictionary, make sure use the copy() method
+mydict3 = mydict.copy()
+
+mydict3["email"] = faker.email()
+print(mydict3)
+print(mydict)
+
+# another way to create a copy of a dictionary is to use the dict(dict_to_copy) method
+
+# to merge two dictionaries
+mydict.update(mydict3)  # it merges and overwrites
+
+# we can  use tuples as keys, but not list
+mytuple = (8, 7)
+mydict = {mytuple: 15}
+mydict
+
+
+#######################################################################
+##### Sets: unordered, mutable, unique
+myset = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10}
+print(myset)
+
+myset = set([2, 4, 6, 8, 10])
+print(myset)
+
+# empty set
+myset = set()
+
+myset.add(2)
+myset.add(4)
+myset.add(6)
+
+print(myset)
+
+# remove
+myset.discard(0)
+myset.discard(2)
+
+# to empty a set
+myset.clear()
+
+odds = set([1, 3, 5, 7, 9])
+evens = set([2, 4, 6, 8, 10])
+primes = set([2, 3, 5, 7])
+
+u = odds.union(evens)
+
+i = odds.intersection(evens)
+i
+
+i = odds.intersection(primes)
+i
+
+i = evens.intersection([2, 3, 4, 4, 5, 6, 7, 8, 9, 10])
+i
+
+setA = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+setB = {1, 2, 3, 10, 11, 12, 13, 14, 15, 16}
+
+diff = setA.difference(setB)
+diff
+
+diff = setA.symmetric_difference(setB)
+diff
+
+setA.update(setB)  # changes/updates setA with the missing from setB
+
+setA.intersection_update(setB)  # updates with common elements
+
+setA.difference_update(setB)  # updates with elements in setA but not in setB
+
+setA.symmetric_difference_update(
+    setB
+)  # updates with elements in setA or setB but not both
+
+
+setA = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+setB = {1, 2, 3}
+
+setB.issubset(setA)
+
+setA.issuperset(setB)
+
+setA.isdisjoint(setB)  # check if there are no common elements
+
+
+setB = setA.copy()  # make a copy of setA
+setB = set(setA)  # make a copy of setA
+
+# frozen set: immutable set
+
+a = frozenset([1, 2, 3, 4, 5])
+a.add(6)
+
+################################
+### String
