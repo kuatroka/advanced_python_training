@@ -1,3 +1,6 @@
+# Intermediate Python Programming Course - Free Code Camp - https://youtu.be/HGOBQPFzWKo
+
+
 # mytuple = "Max", 28, "Boston"
 # # or mytuple = ("Max", 28, "Boston")
 # # if you want a tuple with one element mytuple = ("Max",)
@@ -229,84 +232,32 @@
 
 ################################
 ### String
+################################
 
 
-import pandas as pd
+# my_string = "hello world"
+# print(my_string)
 
-# using dask delayed to take my custom function below, but run it in parallel
-from dask import delayed
-from dask.distributed import Client, progress
+# substring = my_string[::]
+# substring
 
-# here you can define number of workers to be made for parallel processing (each worker will handle one file/process)
-# like this: `client = Client(n_workers=100, threads_per_worker=1)`
-# I am leaving it empty to have workers equal to the number of cores on my machine
-client = Client()
-# having a look at dask dashboard which shows progress of parallel tasks (see dask documentation on it and a photo below)
-client
+# substrintg = my_string[::-1]
+# substrintg
 
+# name = "Tom"
+# greeting = "Hello"
 
-import duckdb
-
-cursor = duckdb.connect(
-    database="/code/adv_python_training/data/13f_filings.duckdb", read_only=False
-)
+# sentence = greeting + " " + name
+# sentence
 
 
-# cursor.execute(
-#     "CREATE TABLE main AS SELECT * FROM \
-#         read_csv_auto('/code/adv_python_training/data/filings_13f_main.csv', \
-#         NULLSTR=NULL, NULLSTR='', dateformat='%Y/%m/%d')"
-# )
+# greeting = "Hello"
 
-# cursor.execute(
-#     "CREATE TABLE main AS SELECT * FROM \
-#         read_csv_auto('/code/adv_python_training/data/filings_13f_xml_flag.csv', \
-#         NULLSTR=NULL, NULLSTR='', dateformat='%Y/%m/%d')"
-# )
+# if 'ell' in greeting:
+#     print('yes')
+# else: print('no')
 
-cursor.execute("DROP TABLE IF EXISTS duckdb_xml_flag")
+my_string = "   Hello World   "
+my_string = my_string.strip()
+print(my_string)
 
-cursor.execute(
-    "CREATE OR REPLACE TABLE duckdb_xml_flag \
-        (accessionNumber VARCHAR PRIMARY KEY, \
-        cikManager VARCHAR, \
-        managerName VARCHAR, \
-        submissionType VARCHAR, \
-        filedAsOfDate DATE, \
-        periodOfReport DATE, \
-        report_Quarter VARCHAR, \
-        report_Year VARCHAR, \
-        xml_flag VARCHAR, \
-        created_at TIMESTAMP)"
-)
-
-cursor.execute(
-    "COPY duckdb_xml_flag FROM \
-    '/code/adv_python_training/data/filings_13f_xml_flag.csv' ( AUTO_DETECT TRUE )"
-)
-
-
-#     AS SELECT * FROM \
-#         read_csv_auto('/code/adv_python_training/data/filings_13f_xml_flag.csv')"
-# )
-
-
-cursor.execute("SELECT * FROM duckdb_xml_flag").fetchone()
-print(cursor.description)
-
-# filedAsOfDate=DATE,\
-# report_Year=INTEGER,\
-# report_Quarter=INTEGER,\
-# cikManager=INTEGER,\
-
-
-# cursor.execute(
-#     "COPY (SELECT * FROM read_csv_auto('/code/adv_python_training/data/filings_13f_main.csv', NULLSTR='NULL', ALL_VARCHAR=1)) \
-#                 TO 'main.parquet'"
-# )
-
-
-cursor.commit()
-cursor.close()
-# PRAGMA memory_limit='20GB';
-# PRAGMA threads=10;
