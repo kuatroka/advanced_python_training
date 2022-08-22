@@ -241,6 +241,7 @@
 # substring = my_string[::]
 # substring
 
+# reverse the order of the characters in the string
 # substrintg = my_string[::-1]
 # substrintg
 
@@ -257,7 +258,44 @@
 #     print('yes')
 # else: print('no')
 
-my_string = "   Hello World   "
-my_string = my_string.strip()
-print(my_string)
+# my_string = "   Hello World   "
+# # my_string = my_string.strip()
+# # print(my_string)
+
+# # print(my_string.lstrip())
+# print(my_string.strip())
+
+# print("what would I do without you...")
+
+############# f string
+
+# var = 3.12345678
+# var2 = 6
+
+# my_string = f"the variable is {var} and {var2} \n"
+# print(my_string)
+
+# print(f"{var + var2}, {var*3}")
+
+# print(f"{var:.3f}")
+
+# print(f"{var:.6f}")
+
+########## Collections
+
+from collections import Counter
+
+a = "aaaaabbbcccccc"
+
+my_counter = Counter(a)
+print(my_counter)
+
+print(my_counter.keys())
+
+import vaex as vx
+from pathlib import Path
+
+path = Path(r"C:\Users\yo_fanpc\Documents\dev\python\advanced_python_training\data\7789-2013-11-14.parquet")
+df = vx.open(path)
+df.head()
 
